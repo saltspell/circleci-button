@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pirate Button App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Pirata One', cursive;
+      background: url('assets/treasure-map-02.jpg') repeat;
+      background-size: cover;
+      animation: scrollMap 60s linear infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #3b2f1c;
+    }
+
+    @keyframes scrollMap {
+      from {
+        background-position: 0 0;
+      }
+      to {
+        background-position: -1200px -800px;
+      }
+    }
+
+    .parchment {
+      background: #fef5d6;
+      border: 40px solid transparent;
+      border-image: url('assets/burned-edges.png') 40 round; /* Burned edge image */
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      padding: 40px;
+      text-align: center;
+      max-width: 600px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background-color: #1b3b5f;
+      color: #f5d76e;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    button:hover {
+      background-color: #122b45;
+      transform: scale(1.05);
+    }
+
+    #message {
+      margin-top: 24px;
+      font-size: 1.8rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.6s ease-out;
+    }
+
+    #message.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="parchment">
+    <button id="myButton">Hoist the Sails!</button>
+    <div id="message"></div>
+  </div>
+
+  <script>
+    function showMessage() {
+      const message = document.getElementById('message');
+      if (message) {
+        message.textContent = 'Ahoy, matey! Welcome aboard to the new text!';
+        message.classList.add('visible');
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const button = document.getElementById('myButton');
+      if (button) {
+        button.addEventListener('click', showMessage);
+      }
+    });
+  </script>
+</body>
+</html>
+
